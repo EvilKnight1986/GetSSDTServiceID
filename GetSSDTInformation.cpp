@@ -186,7 +186,8 @@ BOOL GetSSDTInformation::FindNext(char *pServiceName, int &nServiceID)
             pFunName = (char *)((int)pFunName + (int)m_lpFile) ;
 
             // 如果是Nt开头的话,说不定是SSDT的函数
-            if (NULL != strstr(pFunName, "Nt"))
+            if ('N' == pFunName[0]
+                && 't' == pFunName[1])
             {
                 // 因为有些函数是以序号导出的,所以有名的要通过这个表来找到函数地址
                 // 祥情请看pe格式
